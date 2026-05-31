@@ -1,21 +1,14 @@
 document.getElementById('registerForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
-    var usernameInput = document.getElementById('username').value;
-    var emailInput = document.getElementById('email').value;
-    var passwordInput = document.getElementById('password').value;
-    var messageBox = document.getElementById('message');
+    var usernameInput = document.getElementById('username').value.trim();
+    var emailInput = document.getElementById('email').value.trim();
+    var passwordInput = document.getElementById('password').value.trim();
     
-    // Menyimpan data pendaftaran ke dalam memori browser (localStorage)
     localStorage.setItem('username', usernameInput);
     localStorage.setItem('email', emailInput);
     localStorage.setItem('password', passwordInput);
     
-    if(messageBox) {
-        messageBox.style.color = 'green';
-        messageBox.innerText = 'Pendaftaran berhasil! Silakan menuju halaman login.';
-    }
-    
-    alert('Registrasi Berhasil!');
-    window.location.href = 'index.html'; // Otomatis dialihkan ke halaman login
+    alert('Registrasi Berhasil! Anda akan dialihkan ke halaman login.');
+    window.location.href = "/webku/login/index.html";
 });
