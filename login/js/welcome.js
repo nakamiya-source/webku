@@ -1,3 +1,3 @@
 function goLogin() {
-    window.location.href = "login/index.html";
+    window.location.href = "/webku/login/index.html";
 }
