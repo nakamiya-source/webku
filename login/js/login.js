@@ -1,30 +1,27 @@
 document.getElementById('loginForm').addEventListener('submit', function(event) {
-    // 1. Mencegah halaman refresh otomatis saat tombol diklik
+    // 1. Mencegah halaman login refresh otomatis
     event.preventDefault(); 
 
-    // 2. Mengambil teks yang diketik pengguna di kolom username & password
+    // 2. Mengambil teks username & password dari form
     var usernameInput = document.getElementById('username').value;
     var passwordInput = document.getElementById('password').value;
     
-    // 3. Ambil elemen alert untuk menampilkan pesan kesalahan jika gagal
-    // Catatan: Pastikan di index.html Anda menggunakan id="alertBox"
     var alertDiv = document.getElementById('alertBox'); 
 
-    // 4. Logika Pengecekan Kredensial (Username: heri, Password: 123)
+    // 3. Pengecekan data login
     if (usernameInput === "heri" && passwordInput === "123") {
         
-        // Menyimpan status login di browser agar nama user bisa muncul di halaman berikutnya
+        // Menyimpan data login di memori browser agar bisa dibaca di halaman luar
         localStorage.setItem("statusLogin", "sukses");
         localStorage.setItem("namaUser", "heri");
 
-        // Alihkan halaman ke landingpage.html (sesuaikan nama file Anda)
-        window.location.href = "landingpage.html"; 
+        // Keluar dari folder 'login' (menggunakan ../) lalu masuk ke index.html utama
+        window.location.href = "../index.html"; 
 
     } else {
-        // Jika salah, tampilkan kotak alert bawaan atau alert HTML Anda
+        // Jika salah, tampilkan alert merah di halaman login
         if (alertDiv) {
             alertDiv.style.display = "block";
-            alertDiv.className = "alert alert-danger"; // Menambahkan kelas warna merah jika pakai bootstrap
             alertDiv.innerText = "Username atau password salah!";
         } else {
             alert("Username atau password salah!");
