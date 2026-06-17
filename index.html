@@ -512,27 +512,31 @@ https://templatemo.com/tm-611-maison-doree
     <script src="login/js/welcome.js"></script>
 
     <script>
-    // 1. Periksa apakah user sudah berhasil login atau belum
-    var status = localStorage.getItem("statusLogin");
-    var nama = localStorage.getItem("namaUser");
+        // 1. Periksa apakah user sudah berhasil login
+        var status = localStorage.getItem("statusLogin");
+        var nama = localStorage.getItem("namaUser");
 
-    if (status === "sukses") {
-        // 2. Cari tombol/menu Login di navbar Anda
-        // Silakan cari tag <a> atau <button> untuk login di HTML Anda, lalu beri id="tombolLoginNav"
-        var tombolLogin = document.getElementById("tombolLoginNav"); 
-        
-        if (tombolLogin) {
-            // Mengubah teks tombol menjadi Logout dan menampilkan nama "heri"
-            tombolLogin.innerText = "Logout (" + nama + ")";
-            tombolLogin.href = "#"; // Menonaktifkan link ke halaman login
-            
-            // Logika ketika tombol Logout diklik
-            tombolLogin.addEventListener("click", function() {
-                localStorage.clear(); // Menghapus status login dari browser
-                window.location.reload(); // Memuat ulang halaman agar tombol kembali jadi "Login"
-            });
+        // 2. Ambil elemen teks info dan area tombol dari HTML atas Anda
+        var userInfo = document.getElementById("userInfo");
+        var authArea = document.getElementById("authArea");
+
+        if (status === "sukses") {
+            // Ubah teks "Belum login" menjadi nama user yang masuk
+            if (userInfo) {
+                userInfo.innerText = "Halo, " + nama;
+            }
+
+            // Mengubah tombol Login di authArea menjadi tombol Logout
+            if (authArea) {
+                authArea.innerHTML = '<button id="tombolLogoutNav" class="nav-cta" style="background-color: #d9534f;">Logout</button>';
+                
+                // Berikan fungsi klik pada tombol Logout baru tersebut
+                document.getElementById("tombolLogoutNav").addEventListener("click", function() {
+                    localStorage.clear(); // Hapus memori login di browser
+                    window.location.reload(); // Muat ulang halaman agar kembali ke setelan awal
+                });
+            }
         }
-    }
     </script>
 </body>
 </html>
