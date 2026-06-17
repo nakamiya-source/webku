@@ -1,25 +1,21 @@
-// Menunggu dokumen HTML selesai dimuat
 document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.getElementById("loginForm");
 
-    // Menangani aksi ketika form login dikirim (submit)
     loginForm.addEventListener("submit", function (e) {
-        e.preventDefault(); // Mencegah halaman refresh otomatis
+        e.preventDefault(); 
 
-        // Mengambil nilai dari input username dan password
         const usernameInput = document.getElementById("username").value;
         const passwordInput = document.getElementById("password").value;
 
-        // Validasi kecocokan data akun
         if (usernameInput === "heri" && passwordInput === "123") {
-            // Menyimpan status login dan nama user di browser (Session Storage)
+            // Simpan data ke browser agar halaman tujuan tahu user sudah login
             sessionStorage.setItem("isLoggedIn", "true");
             sessionStorage.setItem("username", "heri");
 
             alert("Login berhasil! Selamat datang, Heri.");
             
-            // Mengarahkan user ke halaman utama/landing page
-            window.location.href = "index.html"; 
+            // UBAH KE HALAMAN LANDING PAGE ANDA DI SINI
+            window.location.href = "landingpage.html"; 
         } else {
             alert("Username atau password salah!");
         }
