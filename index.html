@@ -510,5 +510,29 @@ https://templatemo.com/tm-611-maison-doree
     </footer>
     <script src="templatemo-maison-doree.js"></script>
     <script src="login/js/welcome.js"></script>
+
+    <script>
+    // 1. Periksa apakah user sudah berhasil login atau belum
+    var status = localStorage.getItem("statusLogin");
+    var nama = localStorage.getItem("namaUser");
+
+    if (status === "sukses") {
+        // 2. Cari tombol/menu Login di navbar Anda
+        // Silakan cari tag <a> atau <button> untuk login di HTML Anda, lalu beri id="tombolLoginNav"
+        var tombolLogin = document.getElementById("tombolLoginNav"); 
+        
+        if (tombolLogin) {
+            // Mengubah teks tombol menjadi Logout dan menampilkan nama "heri"
+            tombolLogin.innerText = "Logout (" + nama + ")";
+            tombolLogin.href = "#"; // Menonaktifkan link ke halaman login
+            
+            // Logika ketika tombol Logout diklik
+            tombolLogin.addEventListener("click", function() {
+                localStorage.clear(); // Menghapus status login dari browser
+                window.location.reload(); // Memuat ulang halaman agar tombol kembali jadi "Login"
+            });
+        }
+    }
+    </script>
 </body>
 </html>
